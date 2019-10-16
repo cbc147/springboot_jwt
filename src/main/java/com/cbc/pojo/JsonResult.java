@@ -8,32 +8,32 @@ package com.cbc.pojo;
  */
 public class JsonResult {
 
-    private int statue;
+    private String statue;
     private String msg;
 
     private Object data;
 
     public static JsonResult ok(Object data){
         JsonResult jsonResult = new JsonResult();
-        jsonResult.setStatue(200);
+        jsonResult.setStatue("200");
         jsonResult.setMsg("ok");
         jsonResult.setData(data);
         return jsonResult;
     }
 
-    public static JsonResult error(){
+    public static JsonResult error(String statue,String msg){
         JsonResult jsonResult = new JsonResult();
-        jsonResult.setStatue(500);
-        jsonResult.setMsg("错误");
+        jsonResult.setStatue(statue);
+        jsonResult.setMsg(msg);
         return jsonResult;
     }
 
 
-    public int getStatue() {
+    public String getStatue() {
         return statue;
     }
 
-    public void setStatue(int statue) {
+    public void setStatue(String statue) {
         this.statue = statue;
     }
 

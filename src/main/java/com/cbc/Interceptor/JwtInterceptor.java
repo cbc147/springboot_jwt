@@ -30,10 +30,10 @@ public class JwtInterceptor extends HandlerInterceptorAdapter {
 //        判断是否需要拦截
         boolean isNotCheck = isNotCheck(servletPath);
         if (isNotCheck){
+            System.out.println("isNotCheck is t");
             return true;
         }
 //        需要验证
-
             String token = request.getHeader("token");
             if (StringUtils.isEmpty(token)){
                 throw new Exception("token error");
@@ -60,21 +60,26 @@ public class JwtInterceptor extends HandlerInterceptorAdapter {
         for(String path: NOT_CHECK_URL){
             if (path.endsWith("/**")){
                 String pathStart = path.substring(0,path.lastIndexOf("/")+1);
-                System.out.println("pathStart" + pathStart);
+                //System.out.println("pathStart" + pathStart);
+
                 if (servletPath.startsWith(pathStart)){
+                    System.out.println("servletPath.startsWith(pathStart) is t");
                     return true;
-                }else{
-                    String pathStart2 = path.substring(0,path.lastIndexOf("/"));
-                    System.out.println("pathStart2" + pathStart2);
-                    if (servletPath.equals(pathStart2)){
-                        return true;
-                    }
                 }
-            }else {
-                if (servletPath.equals(path)){
+                System.out.println("servletPath.startsWith(pathStart) is f");
+                String pathStart2 = path.substring(0,path.lastIndexOf("/"));
+                //System.out.println("pathStart2" + pathStart2);
+                if (servletPath.equals(pathStart2)) {
+                    System.out.println("servletPath.equals(pathStart2) is t");
                     return true;
+
                 }
             }
+                if (servletPath.equals(path)){
+                    System.out.println("servletPath.equals(path) is t");
+                    return true;
+                }
+
         }
         return false;
     }

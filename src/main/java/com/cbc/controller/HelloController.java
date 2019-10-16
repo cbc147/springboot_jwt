@@ -1,5 +1,8 @@
 package com.cbc.controller;
 
+import com.cbc.exception.MyException;
+import com.cbc.pojo.JsonResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -10,10 +13,17 @@ import org.springframework.web.bind.annotation.RestController;
  * @Description:
  */
 @RestController
-public class HelloController {
+@RequestMapping("test")
+public class HelloController extends BaseController{
 
-    @RequestMapping("/hello")
-    public Object hello(){
-        return "hello spring boot";
+
+    @RequestMapping(value = "/hello")
+    public JsonResult hello(){
+        return JsonResult.ok("hello spring boot");
+    }
+
+    @GetMapping("/ex")
+    public JsonResult ex(){
+       throw new MyException("MyException错误","500");
     }
 }

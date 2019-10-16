@@ -2,14 +2,17 @@ package com.cbc.controller;
 
 import com.cbc.pojo.JWT;
 import com.cbc.pojo.JsonResult;
+import com.cbc.pojo.SysUser;
 import com.cbc.pojo.User;
 import com.cbc.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * @program: springbootdemo
@@ -36,25 +39,26 @@ public class UserController extends BaseController{
         return JsonResult.ok(user);
 
     }
-//
-//
-//    @PostMapping("setUser")
-//    public JsonResult setUser(User user){
-//
-//        return JsonResult.ok(user);
-//
-//    }
-//
-//    @GetMapping("/getUserAll")
-//    public JsonResult getUserAll(){
-//        List<SysUser> userList = userService.getUser();
-//        return JsonResult.ok(userList);
-//    }
+
+
+    @PostMapping("setUser")
+    public JsonResult setUser(User user){
+
+        return JsonResult.ok(user);
+
+    }
+
+    @GetMapping("/getUserAll")
+    public JsonResult getUserAll(){
+        List<SysUser> userList = userService.getUser();
+        return JsonResult.ok(userList);
+    }
 
     @GetMapping()
     public JsonResult info(){
         return JsonResult.ok(getUserId());
     }
+
     @RequestMapping("/login")
     public JsonResult login(){
         String token = jwt.generateToken(10);
@@ -63,6 +67,8 @@ public class UserController extends BaseController{
         map.put("token", token);
         return JsonResult.ok(map);
     }
+
+
 
 
 }
