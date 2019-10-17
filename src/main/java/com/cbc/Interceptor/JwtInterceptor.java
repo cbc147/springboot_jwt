@@ -45,7 +45,8 @@ public class JwtInterceptor extends HandlerInterceptorAdapter {
             if (jwt.isTokenExpired(claims.getExpiration())){
                 throw new Exception("token is expired");
         }
-
+        System.out.println("subject"+claims.getSubject()
+                +"    getExpiration"+claims.getExpiration()+"     getIssuedAt"+claims.getIssuedAt());
         request.setAttribute(USER_KEY,claims.getSubject());
         return true;
     }

@@ -62,7 +62,7 @@ public class JWT {
 
 //    生成token
     public String generateToken(int user_id){
-        System.out.println("header"+getHeader()+"secret"+getSecret()+"expire"+getExpire());
+        //System.out.println("header"+getHeader()+"   secret"+getSecret()+"   expire"+getExpire());
         Date nowDate = new Date();
 //        过期时间
         Date expireDate = new Date(nowDate.getTime() + getExpire()*1000);

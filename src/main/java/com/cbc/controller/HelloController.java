@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @Description:
  */
 @RestController
-@RequestMapping("test")
+@RequestMapping("test1")
 public class HelloController extends BaseController{
 
 
@@ -25,5 +25,11 @@ public class HelloController extends BaseController{
     @GetMapping("/ex")
     public JsonResult ex(){
        throw new MyException("MyException错误","500");
+    }
+
+    @GetMapping("/getUserId")
+    public JsonResult test(){
+        int userid = getUserId();
+        return JsonResult.ok(userid);
     }
 }

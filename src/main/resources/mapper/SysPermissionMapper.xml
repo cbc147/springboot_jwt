@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cbc.mapper.SysPermissionMapper">
+
+  <sql id="Base_Column_List" >
+       id,
+       name as name,
+       type as type,
+       url as url,
+       percode as  percode,
+       parentid as parentid,
+       parentids as parentids,
+      sort as sort,
+      available as available,
+      description as description,
+      create_time as create_time
+  </sql>
+  <select id="selectAll" resultType="com.cbc.pojo.Permission">
+      select
+      <include refid="Base_Column_List"/>
+    from sys_permission
+  </select>
+
+
+</mapper>
