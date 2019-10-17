@@ -1,1 +1,5 @@
-# springboot_jwt
+#spring+mybatis
+整合jwt实现生成token
+实现拦截器jwtInterceptor拦截请求验证token
+配置webConfig继承WebMvcConfigurer类注册拦截器jwtInterceptor
+并设置需要拦截的路径和不需要拦截的路径
