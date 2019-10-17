@@ -22,6 +22,7 @@ public class WebConfig implements WebMvcConfigurer {
 //    定义拦截器
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(jwtInterceptor).addPathPatterns("/**").excludePathPatterns("/**/error");
+        registry.addInterceptor(jwtInterceptor).addPathPatterns("/**")
+                .excludePathPatterns("/**/error","/user/login","/test/**");
     }
 }
